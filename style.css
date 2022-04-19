@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+
+}
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.4),rgba(4,9,30,0.4)),url("images/background1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo img{
+   width: 150px;
+   top: 50px;
+   left: 50px;
+   position: absolute;
+    cursor: pointer;
+}
+
+.nav-links {
+    cursor: pointer;
+    top: 60px;
+    right: 60px;
+    position: absolute;
+    padding: 10px 30px;
+    overflow: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+.nav-links span{
+    font-family: 'Dosis', sans-serif;
+    font-size: 30px;
+    margin-right: 20px;
+    color: darkorange;
+    transition: 0.2s;
+}
+.nav-links span:hover{
+    color: black;
+    background-color: darkorange;
+    box-shadow: 0 0 10px darkorange, 0 0 20px darkorange,0 0 50px darkorange;
+}
+
+.search-box{
+    top:90px;
+    left:180px;
+    position: absolute;
+    transform: translate(0%,-50%);
+    background: darkorange;
+    height: 50px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.search-box:hover > .search-txt{
+    width: 240px;
+    padding: 0 6px;
+    top: 20px;
+}
+
+.search-box:hover > .search-button{
+    background: whitesmoke;
+}
+
+.search-button{
+    color: darkorange;
+    float: right;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.search-txt{
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 30px;
+    width: 0px;
+    font-family: 'Dosis', sans-serif;
+}
+
+
