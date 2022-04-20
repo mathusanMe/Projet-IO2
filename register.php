@@ -2,36 +2,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration system PHP and MySQL</title>
+    <title>Inscription</title>
 </head>
 <body>
     <div class="header">
-        <h2>Register</h2>
+        <h2>S'incrire</h2>
     </div>
 	
     <form method="post" action="register.php">
   	    <?php include('errors.php'); ?>
-  	    <div class="input-group">
-  	        <label>Username</label>
+  	    <div>
+  	        <label>Nom d'utilisateur</label>
   	        <input type="text" name="username" value="<?php echo $username; ?>">
   	    </div>
-  	    <div class="input-group">
+  	    <div>
   	        <label>Email</label>
   	        <input type="email" name="email" value="<?php echo $email; ?>">
   	    </div>
-  	    <div class="input-group">
-  	        <label>Password</label>
+  	    <div>
+  	        <label>Mot de passe</label>
   	        <input type="password" name="password_1">
   	    </div>
-  	    <div class="input-group">
-  	        <label>Confirm password</label>
+  	    <div>
+  	        <label>Confirmer le mot de passe</label>
   	        <input type="password" name="password_2">
   	    </div>
-  	    <div class="input-group">
-  	    <button type="submit" class="btn" name="reg_user">Register</button>
+  	    <div>
+  	    <button type="submit" name="reg_user">S'inscrire</button>
   	    </div>
   	    <p>
-  		    Already a member? <a href="login.php">Sign in</a>
+  		    Déjà membre? <a href="login.php">Se connecter</a>
   	    </p>
     </form>
 </body>

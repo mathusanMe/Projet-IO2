@@ -5,6 +5,12 @@
     <title>Se connecter</title>
 </head>
 <body>
+    <?php 
+        if (isset($_SESSION['msg'])) {
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+    ?>
     <div>
         <h2>Login</h2>
     </div>
@@ -12,7 +18,7 @@
     <form method="post" action="login.php">
         <?php include('errors.php'); ?>
         <div>
-            <label>Identifiant</label>
+            <label>Nom d'utilisateur</label>
             <input type="text" name="username">
         </div>
         <div>
