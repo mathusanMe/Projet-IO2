@@ -97,4 +97,24 @@ a{
     font-family: 'Dosis', sans-serif;
 }
 
+.slogan {
+   color: darkcyan;
+    top: 180px;
+    left: 200px;
+    position: absolute;
+    font-size: 60px;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+}
+
+.slogan1 {
+    color: darkcyan;
+    top:300px;
+    right: 150px;
+    position: absolute;
+    font-size: 60px;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+}
+
 
