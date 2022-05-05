@@ -17,18 +17,16 @@
 <html>
 <head>
     <title>Accueil</title>
+    <script src="https://kit.fontawesome.com/0a95c06f89.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <article>
         <header>
-            <h1>Page d'accueil</h1>
-            <nav>
-                <a href="main.php">Accueil</a>
-                <a href="user/my_profile.php">My Profile</a>
-            </nav>
+            <?php include_once("header.php"); ?>
         </header>
         
-        <div>
+        <div class="container">
             <?php if (isset($_SESSION['success'])) : ?>
                 <div>
                     <h3>

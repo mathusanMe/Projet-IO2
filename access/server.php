@@ -1,8 +1,20 @@
 <?php
+    include_once("utils.php");
+    require_once("../constants.php");
+?>
+
+<?php
+    session_start();
+
     $username = "";
     $errors = array();
 
-    require_once("connectDB.php");
+    $HOST_NAME = HOST_NAME;
+    $USER = USER;
+    $PASSWORD = PASSWORD;
+    $DATABASE_NAME = DATABASE_NAME;
+    
+    $db = connectDB($HOST_NAME, $USER, $PASSWORD, $DATABASE_NAME);
 
     #region REG_USER inscription de l'utilisateur
 
