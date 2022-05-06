@@ -1,6 +1,7 @@
 <?php
     include_once("access/utils.php");
     require_once("constants.php");
+    require_once("utils.php");
 ?>
 
 <?php
@@ -31,7 +32,9 @@
     <meta charset="utf-8">
     <title>My Profile</title>
     <script src="https://kit.fontawesome.com/0a95c06f89.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/my_profile.css">
 </head>
 <body>
     <article>
@@ -40,17 +43,16 @@
         </header>
         <div class="container">
             <div>
-                <!-- STAFF/CLIENT IMAGE -->
-                <h2><?php echo $username; ?></h2>
-                <p><?php echo $num_of_ratings ?> Rating<?php echo $num_of_ratings > 1 ? "s" : "" ?></p>
+                <h2 class="title">Bonjour, <?php echo $username; ?></h2>
+                <h4 class="ratings"><?php echo $num_of_ratings ?> Evaluation<?php echo $num_of_ratings > 1 ? "s" : "" ?></h4>
             </div>
-            <div>
+            <div class="card-container">
                 <?php while($ratings = mysqli_fetch_assoc($results)): ?>
-                    <div>
-                        <h3><?php echo $ratings['name']; ?></h3>
-                        <p><?php echo $ratings['score']; ?></p>
-                        <img src="<?php echo $ratings['thumbnail_url']; ?>" alt="<?php echo $ratings['name']; ?>">
-                        <img src="<?php echo $ratings['high_res_url']; ?>" alt="<?php echo $ratings['name']; ?>">
+                    <div class="card" style="background-image: url(<?php echo "'" . $ratings['thumbnail_url'] . "'"; ?>); cursor: pointer" onclick="window.location='main.php';">
+                        <i  id="emoji" 
+                            class="<?php echo rating_to_emoji((int) $ratings['score']); ?>" 
+                            style="color: <?php echo style_emoji((int) $ratings['score']); ?>">
+                        </i>
                     </div>
                 <?php endwhile; ?>
             </div>

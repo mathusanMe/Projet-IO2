@@ -18,7 +18,9 @@
 <head>
     <title>Accueil</title>
     <script src="https://kit.fontawesome.com/0a95c06f89.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <article>

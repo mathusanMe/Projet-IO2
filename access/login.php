@@ -6,6 +6,7 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
     <?php 
@@ -16,7 +17,7 @@
         }
     ?>
     <form method="post" action="login.php">
-        <legend>Se connecter à <?php echo WEBSITE_NAME; ?></legend>
+        <h1>Se connecter à <?php echo WEBSITE_NAME; ?></h1>
         <?php include('errors.php'); ?>
         <div>
             <label for="username">Identifiant : </label>
