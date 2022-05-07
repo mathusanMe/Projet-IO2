@@ -22,15 +22,28 @@
         header('Location: ../main.php');
     }
 
-    if (isset($_POST['delUser']) && isset($_POST['staffKey'])) {
-        if ($_POST['staffKey'] == "mdp") {
-            $delUser = $_POST['delUser'];
+    if (isset($_POST['delUser'])) {
+        $delUser = $_POST['delUser'];
+        $user_query = "SELECT * FROM PLAYSTOP.USERS WHERE username='$delUser' LIMIT 1;";
+        $query = mysqli_query($db, $user_query);
+        $result = mysqli_fetch_assoc($query);
+
+        if (!empty($result) && !$result['staff']) {
             $user_query = "DELETE FROM PLAYSTOP.USERS WHERE username='$delUser';";
             if (!mysqli_query($db, $user_query)){
                 echo "Erreur : " . mysqli_error($db);
             }
         }
-        unset($_POST['staffKey'], $_POST['delUser']);
+
+        if (empty($result)) {
+            $returnmsg = "Utilisateur \"{$delUser}\" est inexistant";
+        }
+
+        if (!empty($result) && $result['staff']) {
+            $returnmsg = "Utilisateur \"{$delUser}\" est un administrateur";
+        }
+            
+        unset($_POST['delUser']);
     }
 ?>
 
@@ -51,16 +64,15 @@
         </header>
         <div class="container">
             <div>
-                <h2 class="title">Supprimer un compte</h2>
+                <h2>Supprimer un compte</h2>
             </div>
+            <?php if (isset($returnmsg)): ?>
+                <h3 style="color: red"><?php echo $returnmsg; ?></h3>
+            <?php endif; ?>
             <form method="post" action="settings.php">
                 <div>
-                    <label for="username">Identifiant (user) : </label>
+                    <label for="username">Utilisateur concerné : </label>
                     <input type="text" name="delUser">
-                </div>
-                <div>
-                    <label for="password">Staff Key : </label>
-                    <input type="password" name="staffKey">
                 </div>
                 <div>
                     <button type="submit" name="login_user">Supprimer</button>
