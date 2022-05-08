@@ -1,19 +1,8 @@
 <?php
-    session_start();?>
+    session_start();
+    include 'search.php'
+?>
 
-<?php function printResult($result){
-    $name=""; ?>
-    <div class="card" >
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
-            <figure >
-                <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2zpu.png">
-                <?php $name=$row['name'];
-                        $_SESSION['name']=$name; ?>
-                <a href="gamepage.php"><figcaption><?php echo $row['name'] ?></figcaption></a>
-            </figure>
-        <?php endwhile; ?>
-    </div>
-<?php } ?>
 
 <!DOCTYPE html>
 <html>
@@ -63,18 +52,31 @@
                 <option value="release_date" >Release date</option>
                 <option value="rating" >Rating</option>
             </select>
+                 <button type="submit" name="filter-submit">
+                    <i class="fa-solid fa-check"></i>
+                </button>
             </form>
         </div>
         <div class="filter" >
             <form action="searchpage.php" method="post">
             <select name="platform" >
-                <option value="3">PS4</option>
-                <option value="4">PS5</option>
-                <option value="5">PC</option>
-                <option value="1">Xbox One</option>
-                <option value="2">Xbox One Series S/x</option>
-                <option value="6">Nintendo Switch</option>
+                 <option value="1">PC</option>
+                <option value="2">Xbox Series S/x</option>
+                <option value="3">Xbox One</option>
+                <option value="4">Xbox 360</option>
+                <option value="5">Nintendo Switch</option>
+                <option value="6">Wii U</option>
+                <option value="7">Linux</option>
+                <option value="8">macOS</option>
+                <option value="9">iOS</option>
+                <option value="10">Playstation 3</option>
+                <option value="11">Playstation 4</option>
+                <option value="12">Playstation 5</option>
+                <option value="13">Android</option>
             </select>
+                 <button type="submit" name="filter-submit1">
+                    <i class="fa-solid fa-check"></i>
+                </button>
             </form>
         </div>
     </div>
@@ -118,13 +120,35 @@
             printResult($result);} ?>
 
     <?php
-        if(isset($_POST['order'])){
-            $content= mysqli_escape_string($dbconn, $_POST['game_name']);
-            $sql = "SELECT * FROM game WHERE game_name LIKE '%$content%'
-                    ORDER BY game_name ASC";
-            $result = mysqli_query($dbconn, $sql);
-            printResult($result);} ?>
+        if(isset($_POST['filter-submit'])){
+            $content= $_POST['order'];
+            switch ($content) {
+                case '1':
+                    $sql1 = "SELECT * FROM games ORDER BY games.name ASC";
+                    printResult(mysqli_query($dbconn,$sql1));
+                    break;
+                case '2':
+                    $sql2 = "SELECT * FROM games ORDER BY release_date DESC";
+                    printResult(mysqli_query($dbconn,$sql2));
+                    break;
+                case '3':
+                    $sql3 = "SELECT * FROM games INNER JOIN ratings ON games.game_id=ratings.game_id
+                            ORDER BY ratings.score DESC";
+                    printResult(mysqli_query($dbconn,$sql3));
+                    break;
+            }
+        }
 
+        if(isset($_POST['filter-submit1'])){
+            $content=$_POST['platform'];
+            $sqlpl = "SELECT games.name, games.thumbnail_url, platforms.platform_name, game_platform.platform_id
+                     FROM games
+                     INNER JOIN game_platform ON game_platform.game_id=games.game_id
+                     INNER JOIN platforms ON game_platform.platform_id = platforms.platform_id
+                     WHERE game_platform.platform_id LIKE '%$content%'
+                     GROUP BY games.name";
+            printResult(mysqli_query($dbconn,$sqlpl));
+        }
 
 
 </body>
