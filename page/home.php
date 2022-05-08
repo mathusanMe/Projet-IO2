@@ -1,7 +1,17 @@
+<?php 
+    include_once("../constants.php");
+    include_once("../access/utils.php"); 
+?>
+<?php session_start(); ?>
+
 <?php
-session_start();?>
-<?php
-    $dbconn = mysqli_connect('localhost', 'root', '', 'playstop');
+    $HOST_NAME = HOST_NAME;
+    $USER = USER;
+    $PASSWORD = PASSWORD;
+    $DATABASE_NAME = DATABASE_NAME;
+    
+    $dbconn = connectDB($HOST_NAME, $USER, $PASSWORD, $DATABASE_NAME);
+    
     $sql = "SELECT * FROM games ORDER BY release_date DESC";
     $sql1= "SELECT * FROM games";
     $result=mysqli_query($dbconn, $sql);
