@@ -113,16 +113,16 @@ body{
 
 .title{
     color: red;
-    padding-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 40px;
     width: fit-content;
-    height: 50px;
+    height: fit-content;
     text-align: center;
     border: 0;
+    position: relative;
 }
 
 .description{
-    padding-top: 20px;
     max-width: 500px;
 }
 .ratingnote{
