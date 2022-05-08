@@ -1,6 +1,7 @@
 <?php 
     include_once("../constants.php");
     include_once("../access/utils.php"); 
+    include 'search.php'
 ?>
 <?php session_start(); ?>
 
@@ -12,9 +13,9 @@
     
     $dbconn = connectDB($HOST_NAME, $USER, $PASSWORD, $DATABASE_NAME);
 
-    $name = "Back 4 Blood";
+    $name = $_GET['name'];
     $sql = "SELECT games.name, games.release_date, genres.genre_name, publishers.publisher_name,
-                    platforms.platform_name, developers.developer_name, games.description
+                    platforms.platform_name, developers.developer_name, games.description,  r.score
                     FROM genres
                     INNER JOIN game_genre ON genres.genre_id = game_genre.genre_id
                     INNER JOIN games ON games.game_id = game_genre.game_id
@@ -22,6 +23,8 @@
                     INNER JOIN publishers ON games.publisher_id = publishers.publisher_id
                     INNER JOIN game_platform ON games.game_id = game_platform.game_id
                     INNER JOIN platforms ON game_platform.platform_id = platforms.platform_id
+                    INNER JOIN ratings r on games.game_id = r.game_id
+                    INNER JOIN users u on r.user_id = u.user_id;
                     WHERE games.name LIKE '%$name%'";
     $result=mysqli_query($dbconn, $sql);
     $row=mysqli_fetch_assoc($result);
@@ -68,28 +71,28 @@
     </div>
     <article class="content">
         <div class="content-imgcover">
-            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2mhj.png">
+            <img src="<?php echo $row['thumbnail_url']?>">
         </div>
             <div class="content-description">
-                <div class="title"><p><?php echo $name ?></p></div>
+                <div class="title"><p><?php echo $row['name'] ?></p></div>
                 <div class="description"><p><?php echo $row['description'] ?></p></div>
                 <div class="genre_rating"  >
-                    <div class="genre"><p>Genre: Shooter</p></div>
-                    <div class="ratingnote"><p>Rating: 9/10</p></div>
+                    <div class="genre"><p>Genre: <?php echo $row['genre_name']?></p></div>
+                    <div class="ratingnote"><p>Rating: <?php echo $row['score']?></p></div>
                 </div>
             </div>
         <div class="info-more">
             <div class="icon-info">
-                <i class="fa-solid fa-calendar"> Release date: 07/20/2021</i>
+                <i class="fa-solid fa-calendar"> Release date: <?php echo $row['release_date']?></i>
             </div>
             <div class="icon-info">
-                <i class="fa-solid fa-industry"> Developer: </i>
+                <i class="fa-solid fa-industry"> Developer: <?php echo $row['developer_name']?> </i>
             </div>
             <div class="icon-info">
-                <i class="fa-solid fa-bullhorn"> Publisher: </i>
+                <i class="fa-solid fa-bullhorn"> Publisher: <?php echo $row['publisher_name']?> </i>
             </div>
             <div class="icon-info">
-                <i class="fa-solid fa-gamepad"> Platform: </i>
+                <i class="fa-solid fa-gamepad"> Platform: <?php echo $row['platform_name']?> </i>
             </div>
         </div>
     </article>
