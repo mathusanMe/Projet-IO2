@@ -18,7 +18,6 @@
     $result1=mysqli_query($dbconn, $sql1);
     $row=mysqli_fetch_assoc($result);
     $row1=mysqli_fetch_assoc($result1);
-//    $_SESSION['game-name']=$row['name'];
 ?>
 
 <!DOCTYPE html>
@@ -64,11 +63,16 @@
     <div class="content_game_new">
         <div class="box_new">
             <p>New Game</p>
-            <a href="gamepage.php"><h2><?php echo $row['name'] ?></h2></a>
+            <a href="gamepage.php?name=<?php echo $row['name'] ?>"><h2><?php echo $row['name'] ?></h2></a>
         </div>
         <div class="box_new">
             <p>Positive rating</p>
-            <a href="gamepage.php"><h2><?php echo $row1['name'] ?></h2></a>
+            <a href="gamepage.php?name=<?php echo $row1['name']"><h2><?php echo $row1['name'] ?></h2></a>
+        </div>
+         <div class="box_new">
+            <p>Old days game</p>
+            <a href="gamepage.php?name=<?php echo 'The Witcher 3: Wild Hunt'?>">
+                <h2><?php echo 'The Witcher 3: Wild Hunt' ?></h2></a>
         </div>
     </div>
 </div>
