@@ -125,8 +125,7 @@ a{
 .box_new{
     width: 600px;
     height: 150px;
-    background-image: url("https://images.igdb.com/igdb/image/upload/t_cover_big/co2mhj.png");
-    background-repeat: no-repeat;
+    background-color: blueviolet;
     background-size: cover;
     position: relative;
     border-radius: 20px;
