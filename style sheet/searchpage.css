@@ -1,0 +1,144 @@
+:root{
+    --color-background: #1A1B1F;
+    --color-button: #0288EA;
+}
+
+::placeholder{
+    color: #1A1B1F;
+}
+
+a{
+    text-decoration: none;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: white;
+    min-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.header_logo img{
+    width: 50px;
+    height: auto;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.header_search_bar{
+    position: absolute;
+    top: 60px;
+    left: 160px;
+}
+
+.search_bar{
+    height: 40px;
+    border-radius: 50px;
+    background: red;
+    padding-top: 9px ;
+    padding-left: 20px;
+    width: 500px;
+}
+
+.search_bar button{
+    color: #1A1B1F;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    outline: none;
+}
+
+.search_text{
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: #1A1B1F;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 50px;
+    gap: 30px;
+    position: fixed;
+    overflow: hidden;
+}
+
+.icon a{
+    color:white;
+    font-size: 30px;
+}
+
+.select_filter{
+    position: absolute;
+    top: 140px;
+    left: 160px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    flex-wrap: nowrap;
+    background: none;
+}
+
+select{
+    box-shadow: 0 10px 25px rgba(255,101,80,0.4);
+    font-size: 16px;
+    padding: 6px 14px;
+    background: none;
+    color: #1A1B1F;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+}
+
+.card img {
+    width: 264px;
+    height: 352px;
+    border-radius: 50px;
+}
+
+.card{
+    position: absolute;
+    top: 250px;
+    left: 160px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+    column-gap: 40px;
+    row-gap: 40px;
+    column-width: 264px;
+}
+
+
+
+
+
+
+
+
+
+
+
